@@ -4,5 +4,7 @@ export default {
     './index.html',
     './src/**/**/*.html',
   ],
-  plugins: [],
+  plugins: [
+    require('tailwindcss-animate')
+  ],
 };

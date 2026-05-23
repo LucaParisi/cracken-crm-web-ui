@@ -1,20 +1,12 @@
 import { Routes } from '@angular/router';
 import {LoginPage} from '../pages/login-page/login-page';
-import {NotFound} from '../pages/not-found/not-found';
-import {RegisterPage} from '../pages/register-page/register-page';
-import {HomePage} from '../pages/homepage/home-page.component';
+import {SignUpPage} from '../pages/sign-up-page/sign-up-page';
 
 export const routes: Routes = [
   {
-    path: '', title: 'Cracken CRM', component: HomePage
+    path: '', component: LoginPage
   },
   {
-    path: 'login', title: 'Cracken CRM - Login', component: LoginPage
-  },
-  {
-    path: 'register', title: 'Cracken CRM - Register', component: RegisterPage
-  },
-  {
-    path: '**', title: 'Not Found', component: NotFound
+    path: 'sign-up', component: SignUpPage
   }
 ];
