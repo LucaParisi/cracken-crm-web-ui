@@ -1,0 +1,23 @@
+<label
+  for="input"
+  class="text-md"
+>
+  {{ label }}
+</label>
+
+<div class="flex flex-row bg-white text-zinc-800 rounded-md">
+
+  <ng-content select="[leading]"></ng-content>
+
+  <input
+    id="input"
+    [type]="type"
+    [placeholder]="placeholder"
+    [disabled]="disabled"
+    [value]="value"
+    (input)="updateValue($event)"
+    class="p-3 w-full outline-none"
+  />
+
+  <ng-content select="[trailing]"></ng-content>
+</div>

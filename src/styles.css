@@ -1,21 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
 
+html{
+  margin: 0;
+  padding: 0;
+}
 
-/*@layer components {*/
-/*  .login-credentials-panel {*/
-/*    @apply*/
-/*    bg-blue-300*/
-/*    opacity-75*/
-/*    rounded-3xl*/
-/*    shadow*/
-/*    border*/
-/*    border-slate-200*/
-/*    my-auto*/
-/*    flex*/
-/*    flex-col*/
-/*    align-middle*/
-/*    p-7*/
-/*    space-y-3*/
-/*  }*/
-/*}*/
+body{
+  margin: 0;
+  padding: 0;
+}
+
+
+@layer components {
+  html{
+    @apply
+    bg-zinc-900
+    text-white
+    text-xl
+    placeholder:text-xl
+  }
+
+  .primary-link{
+    @apply
+    text-teal-500
+    font-bold
+    hover:underline
+  }
+}

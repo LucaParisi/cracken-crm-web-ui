@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+@layer components {
+  p {
+    @apply
+    text-center
+    mt-1
+    md:mt-2
+    text-sm
+  }
+}

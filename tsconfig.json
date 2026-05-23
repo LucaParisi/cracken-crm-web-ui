@@ -21,6 +21,7 @@
       "@hooks": ["./src/hooks"],
       "@pages": ["./src/app/pages"],
       "@constants": ["./src/app/constants"],
+      "@env": ["./src/environments/environment"]
     }
   },
   "angularCompilerOptions": {

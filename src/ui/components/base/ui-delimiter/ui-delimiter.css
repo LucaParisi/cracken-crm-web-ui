@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+:host {
+  display: block;
+}
+
+@layer components{
+  .delimiter{
+    @apply
+    block
+    border-t
+    border-t-zinc-500
+    w-full
+    my-4
+  }
+}

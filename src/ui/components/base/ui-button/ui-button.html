@@ -1,0 +1,15 @@
+<button
+  [ngClass]="ngClasses"
+  (click)="onClick.emit();"
+  [disabled]="disabled || loading"
+>
+
+  @if (loading) {
+    <svg lucideShell class="animate-spin"></svg>
+  }
+
+  <span>
+    <ng-content>
+    </ng-content>
+  </span>
+</button>
