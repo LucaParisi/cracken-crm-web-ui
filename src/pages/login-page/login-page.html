@@ -2,44 +2,36 @@
   <div class="flex flex-1 items-center justify-center">
 
     <div class="space-y-4 w-96">
-      <img
-        ngSrc="favicon.png"
-        class="mx-auto"
-        [height]="250"
-        [width]="250"
-        draggable="false"
-        alt="cracken-crm-logo"
-      />
-      <h1 class="font-bold text-xl text-center">Welcome on Cracken</h1>
+      <public-header />
 
       <ui-input
         [(ngModel)]="username"
-        type="{{passwordInputType}}"
+        type="text"
         label="Email/Username"
         placeholder="example@email.com"
       >
-        <div leading class="border-r border-r-zinc-800 p-3 hover:opacity-75">
-          <svg lucideAtSign color="#27272a"></svg>
+        <div leading class="hover:opacity-75 mr-2 my-auto">
+          <svg lucideAtSign color="white" [size]="20"></svg>
         </div>
       </ui-input>
 
 
-      <ui-input
-        [(ngModel)]="password"
-        type="{{passwordInputType}}"
-        label="Password"
-        placeholder="°°°°°°°"
-        [isPassword]="true"
-      >
-        <div leading class="border-r border-r-zinc-800 p-3 hover:opacity-75">
-          <svg lucideKey color="#27272a"></svg>
-        </div>
+      <div>
+        <ui-input
+          [(ngModel)]="password"
+          type="password"
+          label="Password"
+          placeholder="°°°°°°°"
+        >
+          <div leading class="hover:opacity-75 mr-2 my-auto">
+            <svg lucideKey color="white" [size]="20"></svg>
+          </div>
+        </ui-input>
 
-        <button trailing class="border-l rounded-none border-l-zinc-800 p-3 hover:opacity-75 cursor-pointer" (click)="switchPasswordVisibility()">
-          <svg [lucideIcon]="passwordInputIcon()" color="#27272a"></svg>
-        </button>
-
-      </ui-input>
+        <a class="primary-link text-end block text-sm mt-1" href="/auth/forgot-password">
+          Forgot password?
+        </a>
+      </div>
 
       <ui-button
         type="primary"
@@ -53,8 +45,8 @@
 
       <ui-delimiter />
 
-      <p class="text-center text-lg">Don't have an account?
-        <a href="/sign-up" class="primary-link">&nbsp;create one</a>
+      <p class="text-center">Don't have an account?
+        <a href="/auth/sign-up" class="primary-link">&nbsp;create one</a>
         <span class="text-white">&ensp;for free</span>
       </p>
     </div>
