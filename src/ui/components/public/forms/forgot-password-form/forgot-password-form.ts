@@ -37,6 +37,6 @@ export class ForgotPasswordForm {
 
   handleNext(){
     this.isLoading = true
-    this.router.navigate(['/auth/forgot-password/otp-verification']).then(e => console.log('navigating', e)).catch(e => console.log('err', e));
+    this.router.navigate(['/auth/forgot-password/otp-verification']);
   }
 }
