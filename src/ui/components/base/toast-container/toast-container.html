@@ -1,0 +1,7 @@
+<div class="fixed top-4 left-1/2 -translate-x-1/2">
+  <div class="flex flex-col">
+    @for (toast of toastService.toasts(); track toast.id; let index = $index){
+      <toast-event [id]="toast.id" [type]="toast.type" [message]="toast.message" [index]="index + 1" />
+    }
+  </div>
+</div>

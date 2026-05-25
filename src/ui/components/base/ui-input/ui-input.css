@@ -1,3 +1,36 @@
+@import "tailwindcss";
+
 :host {
   display: block;
+}
+
+@layer base {
+  input[type="number"]::-webkit-outer-spin-button,
+  input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+  input[type="date"]::-webkit-calendar-picker-indicator {
+    display: none;
+    -webkit-appearance: none;
+  }
+}
+
+@layer components{
+  input{
+    @apply
+    px-3
+    w-full
+    outline-none
+    bg-zinc-900
+    rounded-lg
+    placeholder:text-sm
+    text-sm
+    py-1
+  }
 }

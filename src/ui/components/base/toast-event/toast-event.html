@@ -1,0 +1,32 @@
+<div class="w-96 min-h-22 shadow animate-toast-in">
+
+  <div [ngClass]="{
+  'mx-auto': true,
+  'w-70': this.index() === 3,
+  ' w-80': this.index() === 2,
+  'w-full': this.index() === 1,
+
+  }">
+
+    <div [ngClass]="{
+      'rounded-t-md p-1 flex flex-row justify-between content-between': true,
+      'bg-red-500': this.type() === 'error',
+      'bg-zinc-500': this.type() === 'info',
+      'bg-orange-500': this.type() === 'warning',
+      'bg-green-500': this.type() === 'success'
+    }">
+
+      <h1 class="font-bold">
+        #{{this.index()}} - {{title}}
+      </h1>
+
+      <svg lucideX color="white" class="hover:opacity-75 cursor-pointer" (keyup)="close()" (click)="close()"/>
+    </div>
+
+    <div class="bg-white w-full rounded-b-md">
+      <p class="text-zinc-800 text-sm p-1.5">
+        {{message()}}
+      </p>
+    </div>
+  </div>
+</div>

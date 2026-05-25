@@ -17,11 +17,13 @@
     "paths": {
       "@components": ["./src/app/components"],
       "@interfaces": ["./src/interfaces"],
-      "@apis": ["./src/apis"],
+      "@services": ["./src/services"],
       "@hooks": ["./src/hooks"],
       "@pages": ["./src/app/pages"],
-      "@constants": ["./src/app/constants"],
-      "@env": ["./src/environments/environment"]
+      "@constants": ["./src/constants"],
+      "@env": ["./src/environments/environment"],
+      "@guards": ["./src/guards"],
+      "@layouts": ["./src/layouts"],
     }
   },
   "angularCompilerOptions": {

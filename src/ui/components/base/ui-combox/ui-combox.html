@@ -1,0 +1,17 @@
+<label
+  for="combox"
+  class="text-sm"
+>
+  {{label}}
+</label>
+
+
+<div class="flex flex-row text-zinc-200 rounded-md">
+  <ng-content />
+
+  <select class="w-full">
+    @for (option of options; track option.value) {
+      <option [value]="option.value">{{option.label}}</option>
+    }
+  </select>
+</div>

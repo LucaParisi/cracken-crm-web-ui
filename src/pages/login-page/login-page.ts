@@ -1,48 +1,38 @@
-import {Component, computed, signal, WritableSignal} from '@angular/core';
-import {NgOptimizedImage} from "@angular/common";
-import {Auth} from '@apis';
-import {AccessToken} from '@interfaces';
-import {LucideAtSign, LucideDynamicIcon, LucideEye, LucideEyeClosed, LucideKey} from '@lucide/angular';
+import {Component, signal, WritableSignal} from '@angular/core';
+import {AuthService, ToastService} from '@services';
+import {LucideAtSign, LucideKey} from '@lucide/angular';
 import {FormsModule} from '@angular/forms';
-import {ToastService} from '../../toast/toast.service';
 import {UiButton} from '../../ui/components/base/ui-button/ui-button';
 import {Delimiter} from '../../ui/components/base/ui-delimiter/ui-delimiter';
 import {UiInput} from '../../ui/components/base/ui-input/ui-input';
+import {Router} from '@angular/router';
+import {PublicHeader} from '../../ui/components/public/public-header/public-header';
+import {AccessToken} from '@interfaces';
 
 @Component({
-  selector: 'app-login-page',
+  selector: 'login-page',
   imports: [
-    NgOptimizedImage,
     LucideAtSign,
-    LucideDynamicIcon,
     FormsModule,
     UiButton,
     Delimiter,
     UiInput,
     LucideKey,
+    PublicHeader,
   ],
   templateUrl: './login-page.html',
   styleUrl: './login-page.css'
 })
 export class LoginPage {
   constructor(
-    private readonly authService: Auth,
-    private readonly toastService: ToastService
+    private readonly authService: AuthService,
+    private readonly toastService: ToastService,
+    private readonly router: Router
   ) {}
 
   username!: string;
   password!: string;
   protected readonly isLoading: WritableSignal<boolean> = signal<boolean>(false);
-  protected readonly isPasswordVisibile: WritableSignal<boolean> = signal<boolean>(false);
-  protected readonly passwordInputIcon = computed(() => this.isPasswordVisibile() ? LucideEye : LucideEyeClosed)
-
-  get passwordInputType(): 'text' | 'password' {
-    return this.isPasswordVisibile() ? 'text' : 'password';
-  }
-
-  switchPasswordVisibility(){
-    this.isPasswordVisibile.update((value) => !value)
-  }
 
   login(){
     if(!this.username || ! this.password){
@@ -50,19 +40,17 @@ export class LoginPage {
       return;
     }
 
-    this.isLoading.set(true);
     this.authService.login(this.username, this.password)
       .subscribe({
         next: (res: AccessToken) => {
           //TODO handle redirect to internal app
           this.isLoading.set(false);
+          this.router.navigate(['/crm/dashboard']);
         },
-        error: (err)=> {
+        error: ()=> {
           this.toastService.show('error', 'Invalid credentials')
           this.isLoading.set(false);
         },
       })
   }
-
-  protected readonly console = console;
 }

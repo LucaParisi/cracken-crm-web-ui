@@ -1,47 +1,129 @@
-<div class="h-screen flex">
-  <div class="rounded-full bg-teal-500">
-    <svg lucideChevronLeft color="white"/>
-  </div>
+<public-back-button />
 
-  <div class="flex flex-1 items-center justify-center">
-    <div class="space-y-4 w-125">
-      <img
-        ngSrc="favicon.png"
-        class="mx-auto"
-        [height]="250"
-        [width]="250"
-        draggable="false"
-        alt="cracken-crm-logo"
-      />
-      <h1 class="font-bold text-4xl text-center">Sign-up to Cracken</h1>
+<div class="flex flex-1 items-center justify-center p-20">
+  <div class="space-y-4 w-125">
+    <public-header title="Sign-up on Cracken" />
 
-      <label for="firstName">First Name</label>
-      <div class="flex flex-row gap-x-3 bg-zinc-500 rounded-md">
-        <div class="border-r border-r-zinc-800 p-3 hover:opacity-75">
-          <svg lucideUserRoundPen color="white"></svg>
-        </div>
-        <input id="firstName" type="text" class="p-3 w-full" placeholder="John" [(ngModel)]="newUser.firstName"/>
+    <ui-input
+      label="Username"
+      placeholder="johnnydoe"
+      [ngModel]="newUser.firstName"
+    >
+      <div leading class="hover:opacity-75 mr-2 my-auto">
+        <svg lucideAtSign color="white" [size]="20"></svg>
       </div>
+    </ui-input>
 
-      <label for="lastName">Last Name</label><
-      <div class="flex flex-row gap-x-3 bg-zinc-500 rounded-md">
-        <div class="border-r border-r-zinc-800 p-3 hover:opacity-75">
-          <svg lucideUserRoundPen color="white"></svg>
-        </div>
-        <input id="lastName" type="text" class="p-3 w-full" placeholder="Doe" [(ngModel)]="newUser.lastName"/>
+    <ui-input
+      label="First Name"
+      placeholder="John"
+      [ngModel]="newUser.firstName"
+    >
+      <div leading class="hover:opacity-75 mr-2 my-auto">
+        <svg lucideUserRoundPen color="white" [size]="20"></svg>
       </div>
+    </ui-input>
 
-      <label for="email">Email</label>
-      <div class="flex flex-row gap-x-3 bg-zinc-500 rounded-md">
-        <div class="border-r border-r-zinc-800 p-3 hover:opacity-75">
-          <svg lucideUserRoundPen color="white"></svg>
-        </div>
-        <input id="email" type="email" class="p-3 w-full" placeholder="john.doe@example.com" [(ngModel)]="newUser.email"/>
+    <ui-input
+      label="Last Name"
+      placeholder="Doe"
+      [ngModel]="newUser.lastName"
+    >
+      <div leading class="hover:opacity-75 mr-2 my-auto">
+        <svg lucideUserRoundPen color="white" [size]="20"></svg>
       </div>
+    </ui-input>
 
-      <div class="flex flex-row justify-between content-between">
-
+    <ui-combox
+      [options]="genders"
+      label="Gender"
+    >
+      <div class="hover:opacity-75 mr-2 my-auto">
+        <svg lucideVenusAndMars color="white" [size]="20"></svg>
       </div>
+    </ui-combox>
+
+    <ui-input
+      label="Email"
+      placeholder="john@doe.com"
+      type="email"
+      [ngModel]="newUser.lastName"
+    >
+      <div leading class="hover:opacity-75 mr-2 my-auto">
+        <svg lucideMail color="white" [size]="20"></svg>
+      </div>
+    </ui-input>
+
+    <ui-input
+      label="Mobile"
+      placeholder="john@doe.com"
+      type="number"
+      [ngModel]="newUser.mobile"
+    >
+      <div leading class="hover:opacity-75 mr-2 my-auto">
+        <svg lucidePhone color="white" [size]="20"></svg>
+      </div>
+    </ui-input>
+
+    <ui-input
+      label="Date of Birth"
+      type="date"
+      [ngModel]="newUser.birthDate"
+    >
+      <div leading class="hover:opacity-75 mr-2 my-auto">
+        <svg lucideCalendarDays color="white" [size]="20"></svg>
+      </div>
+    </ui-input>
+
+    <ui-input
+      label="Fiscal Code"
+      type="text"
+      placeholder="TSTRMA00E01A0001"
+      [ngModel]="newUser.fiscalCode"
+    >
+      <div leading class="hover:opacity-75 mr-2 my-auto">
+        <svg lucideUserRoundSearch color="white" [size]="20"></svg>
+      </div>
+    </ui-input>
+
+    <ui-input
+      label="Passowrd"
+      type="password"
+      placeholder="°°°°°°°"
+      [ngModel]="newUser.password"
+    >
+      <div leading class="hover:opacity-75 mr-2 my-auto">
+        <svg lucideKey color="white" [size]="20"></svg>
+      </div>
+    </ui-input>
+
+
+    <ui-input
+      label="Confirm Passowrd"
+      type="password"
+      placeholder="°°°°°°°"
+      [ngModel]="newUser.confirmPassword"
+    >
+      <div leading class="hover:opacity-75 mr-2 my-auto">
+        <svg lucideKey color="white" [size]="20"></svg>
+      </div>
+    </ui-input>
+
+    <ui-delimiter />
+    <div class="flex flex-row justify-between content-between w-full">
+      <ui-button type="secondary" additionalNgClass="min-w-60" [disabled]="isLoading" (onClick)="handleBack()">
+        Back
+      </ui-button>
+
+      <ui-button type="primary" additionalNgClass="min-w-60" [loading]="isLoading" (onClick)="isLoading = true">
+        Next
+      </ui-button>
     </div>
+
+    <ui-delimiter />
+    <p class="text-center">Already have an account?
+      &ensp;
+      <a class="text-teal-500 hover:underline hover:opacity-75 cursor-pointer" (click)="navigateToLogin()">Login</a>
+    </p>
   </div>
 </div>

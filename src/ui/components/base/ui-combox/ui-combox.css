@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+:host {
+  display: block;
+}
+
+@layer components{
+  select{
+    @apply
+    px-3
+    w-full
+    outline-none
+    bg-zinc-900
+    rounded-lg
+    placeholder:text-sm
+    text-sm
+    py-1
+  }
+}
