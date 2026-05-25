@@ -23,7 +23,6 @@ export const routes: Routes = [
       { path: '**', redirectTo: 'login'}
     ],
   },
-
   {
     path: 'crm',
     component: AuthenticatedLayout,
