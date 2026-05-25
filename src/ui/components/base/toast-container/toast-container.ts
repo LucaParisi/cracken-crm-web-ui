@@ -1,7 +1,6 @@
-import {Component, inject, input, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
+import {Component, inject, input} from '@angular/core';
 import {ToastEvent} from '../toast-event/toast-event';
-import {ToastType} from '../../types/toast.type';
-import {ToastService} from '../toast.service';
+import {ToastService} from '@services';
 
 @Component({
   selector: 'toast-container',
@@ -14,4 +13,5 @@ import {ToastService} from '../toast.service';
 })
 export class ToastContainer{
   toastService = inject(ToastService);
+  protected readonly input = input;
 }
