@@ -8,9 +8,8 @@
   button{
     @apply
     text-white
-    text-xl
     rounded-md
-    p-2
+    p-0.5
     font-bold
     hover:opacity-75
     cursor-pointer
@@ -21,6 +20,7 @@
     justify-center
     content-center
     items-center
+    shadow
   }
 
   button span{

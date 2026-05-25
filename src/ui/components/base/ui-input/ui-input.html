@@ -1,23 +1,38 @@
 <label
   for="input"
-  class="text-md"
+  class="text-sm"
 >
   {{ label }}
 </label>
 
-<div class="flex flex-row bg-white text-zinc-800 rounded-md">
+<div class="flex flex-row text-zinc-200 rounded-md">
 
-  <ng-content select="[leading]"></ng-content>
+  <ng-content select="[leading]" />
 
   <input
     id="input"
-    [type]="type"
+    [type]="_type"
     [placeholder]="placeholder"
     [disabled]="disabled"
     [value]="value"
     (input)="updateValue($event)"
-    class="p-3 w-full outline-none"
   />
 
-  <ng-content select="[trailing]"></ng-content>
+  <ng-content select="[trailing]" />
+
+  @if (type === 'password') {
+    <button class="ml-2 hover:opacity-75 cursor-pointer" (click)="switchPasswordVisibility()">
+
+      @if (isPasswordVisibile()) {
+
+        <svg lucideEye color="white" [size]="20" />
+
+      } @else {
+
+        <svg lucideEyeClosed color="white" [size]="20" />
+
+      }
+
+    </button>
+  }
 </div>

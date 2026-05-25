@@ -1,7 +1,7 @@
 import {
   Component,
   forwardRef,
-  Input,
+  Input, signal, WritableSignal,
 } from '@angular/core';
 
 import {
@@ -9,12 +9,15 @@ import {
   FormsModule,
   NG_VALUE_ACCESSOR
 } from '@angular/forms';
+import {LucideEye, LucideEyeClosed} from '@lucide/angular';
 
 @Component({
   selector: 'ui-input',
   standalone: true,
   imports: [
     FormsModule,
+    LucideEye,
+    LucideEyeClosed
   ],
   templateUrl: './ui-input.html',
   styleUrl: './ui-input.css',
@@ -28,21 +31,28 @@ import {
 })
 export class UiInput implements ControlValueAccessor {
 
-  @Input() label = '';
+  @Input()
+  label = '';
 
-  @Input() isPassword: boolean = false;
+  @Input()
+  type = 'text';
 
-  @Input() type = 'text';
-
-  @Input() placeholder = '';
+  @Input()
+  placeholder = '';
 
   value = '';
 
   disabled = false;
 
+  protected readonly isPasswordVisibile: WritableSignal<boolean> = signal<boolean>(false);
+
   private onChange: (value: string) => void = () => {};
 
   private onTouched: () => void = () => {};
+
+  get _type(){
+    return this.isPasswordVisibile() && this.type === 'password' ? 'text' : this.type;
+  }
 
   writeValue(value: string): void {
     this.value = value || '';
@@ -69,4 +79,9 @@ export class UiInput implements ControlValueAccessor {
 
     this.onTouched();
   }
+
+  switchPasswordVisibility(){
+    this.isPasswordVisibile.update((value) => !value)
+  }
+
 }

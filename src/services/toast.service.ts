@@ -9,7 +9,13 @@ export class ToastService {
   show(type: ToastType, message: string) {
     const toast: Toast = new Toast(type, message);
 
-    this.toasts.update(t => [...t, toast]);
+    this.toasts.update(t => {
+      const old = [...t];
+      if(old.length >= 3){
+        old.shift();
+      }
+      return [...old, toast]
+    });
 
     setTimeout(() => {
       this.toasts.update(t =>
